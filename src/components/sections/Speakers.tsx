@@ -1,41 +1,34 @@
 import { motion } from 'framer-motion'
 
-const speakers = [
+interface Speaker {
+  name: string;
+  title: string;
+  company: string;
+  bio: string;
+  image?: string;
+}
+
+const speakers: Speaker[] = [
   {
-    name: "Speaker 1",
-    title: "Role 1",
-    company: "Company 1",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt."
+    name: "Peyman Momeni",
+    title: "Co-founder & CEO",
+    company: "Fairblock",
+    bio: "CEO and Co-Founder of Fairblock, specializing in applied cryptography, algorithmic game theory, and blockchain infrastructure.",
+    image: "/speakers/peyman.jpg"
   },
   {
-    name: "Speaker 2",
-    title: "Role 2",
-    company: "Company 2",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt."
+    name: "William Wang",
+    title: "Software Engineer Intern",
+    company: "Bloomberg",
+    bio: "62x hackathon winner ($130K+ in prizes) with experience at Bloomberg, Cohere, and Microsoft, specializing in AI and Web3.",
+    image: "/speakers/william.jpg"
   },
   {
-    name: "Speaker 3",
-    title: "Role 3",
-    company: "Company 3",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt."
-  },
-  {
-    name: "Speaker 4",
-    title: "Role 4",
-    company: "Company 4",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt."
-  },
-  {
-    name: "Speaker 5",
-    title: "Role 5",
-    company: "Company 5",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt."
-  },
-  {
-    name: "Speaker 6",
-    title: "Role 6",
-    company: "Company 6",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt."
+    name: "Konrad Weber",
+    title: "Co-President",
+    company: "Waterloo Blockchain",
+    bio: "Leading Waterloo Blockchain to empower 500+ students through Web3 education, hackathons, and industry connections.",
+    image: "/speakers/konrad.jpg"
   }
 ]
 
@@ -89,8 +82,17 @@ export const Speakers = () => {
               <div className={`absolute inset-0 bg-gradient-to-br ${getRandomGradient(index)} rounded-xl opacity-40`} />
               
               <div className="relative bg-[rgb(var(--color-background))] border border-white/10 rounded-xl overflow-hidden backdrop-blur-sm">
-                {/* Speaker Image Placeholder */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden group-hover:scale-[1.01] transition-transform duration-300">
+                {/* Speaker Image or Gradient Background */}
+                <div className="aspect-[4/3] relative overflow-hidden group-hover:scale-[1.01] transition-transform duration-300">
+                  {speaker.image ? (
+                    <img
+                      src={speaker.image}
+                      alt={speaker.name}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-xl font-bold text-white mb-1">{speaker.name}</h3>
@@ -110,20 +112,6 @@ export const Speakers = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-20 text-center"
-        >
-          <button className="relative overflow-hidden group bg-gradient-to-br from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 px-8 py-3 rounded-lg transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <span className="relative text-white font-medium">View All Speakers</span>
-          </button>
-        </motion.div>
       </div>
     </section>
   )
