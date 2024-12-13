@@ -3,7 +3,7 @@ import { Background } from './Background'
 
 export const Hero = () => {
   return (
-    <div className="relative min-h-screen h-fit overflow-hidden">
+    <section id="home" className="relative min-h-screen h-fit overflow-hidden">
       <Background />
       
       {/* Animated Decorative Elements */}
@@ -169,6 +169,6 @@ export const Hero = () => {
 
       {/* Decorative Bottom Gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 bg-gradient-to-t from-[rgb(var(--color-background))] to-transparent" />
-    </div>
+    </section>
   )
 } 

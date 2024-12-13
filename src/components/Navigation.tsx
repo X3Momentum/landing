@@ -4,6 +4,7 @@ import { Bars3Icon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Home', href: '#', section: 'home' },
+  { name: 'About', href: '#about', section: 'about' },
   { name: 'Timeline', href: '#timeline', section: 'timeline' },
   { name: 'Sponsors', href: '#sponsors', section: 'sponsors' },
   { name: 'Speakers', href: '#speakers', section: 'speakers' },
@@ -24,20 +25,21 @@ export const Navigation = () => {
 
       // Find the current section
       const sections = navigation.map(nav => nav.section)
-      const sectionElements = sections.map(section => 
-        section === 'home' 
-          ? document.querySelector('main') 
-          : document.querySelector(`#${section}`)
-      )
+      const sectionElements = sections.map(section => document.querySelector(`#${section}`))
 
-      const currentSectionIndex = sectionElements.findIndex((element) => {
+      const currentSectionIndex = sectionElements.findIndex((element, index) => {
         if (!element) return false
         const rect = element.getBoundingClientRect()
-        return rect.top <= 100 && rect.bottom > 100
+        // Adjust the detection area for the home section
+        const threshold = sections[index] === 'home' ? window.innerHeight / 2 : 100
+        return rect.top <= threshold && rect.bottom > threshold
       })
 
       if (currentSectionIndex !== -1) {
         setActiveSection(sections[currentSectionIndex])
+      } else if (window.scrollY === 0) {
+        // If at the very top, set home as active
+        setActiveSection('home')
       }
     }
 
