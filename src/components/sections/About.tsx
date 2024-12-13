@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import CountUp from 'react-countup'
 
 const stats = [
-  { label: "Direct Reach", value: 1500, unit: "Developers", prefix: "", suffix: "+" },
+  { label: "Direct Reach", value: 1000, unit: "Developers", prefix: "", suffix: "+" },
   { label: "Digital Impact", value: 50000, unit: "Global Reach", prefix: "", suffix: "+" },
   { label: "Tech Talent", value: 700, unit: "Blockchain Devs", prefix: "", suffix: "+" },
   { label: "Innovation Hubs", value: 5, unit: "Major Cities", prefix: "", suffix: "" },
