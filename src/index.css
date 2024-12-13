@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 42, 47, 69;
+    --color-accent: 147, 51, 234;
+    --color-background: 8, 9, 28;
+  }
+
+  body {
+    @apply bg-[rgb(var(--color-background))] text-white font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-purple-500/30 text-white;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/[0.03] backdrop-blur-sm border border-white/[0.05] rounded-xl;
+  }
+  
+  .glass-button {
+    @apply glass-panel px-6 py-3 transition-all duration-300 hover:bg-white/[0.07] active:scale-[0.98];
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FF1CF7] via-[#7F27FF] to-[#00c3ff] animate-gradient bg-[length:200%_auto];
+  }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgba(147, 51, 234, 0.45);
+  }
+
+  .split-content {
+    @apply relative overflow-hidden;
+    & > * {
+      @apply transition-transform duration-300;
+    }
+    &:hover > *:first-child {
+      @apply -translate-y-full;
+    }
+    &:hover > *:last-child {
+      @apply translate-y-0;
+    }
+    & > *:last-child {
+      @apply absolute top-0 left-0 translate-y-full;
+    }
+  }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.clip-path-button {
+  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+}
