@@ -21,7 +21,11 @@ const tiers = [
   {
     name: "Genesis",
     sponsors: [
-      { name: "Available" },
+      { 
+        name: "Fairblock Network",
+        image: "/sponsors/fairblock.png",
+        url: "https://www.fairblock.network/"
+      },
       { name: "Available" },
       { name: "Available" },
       { name: "Available" },
@@ -118,20 +122,31 @@ export const Sponsors = () => {
                     whileHover={{ scale: 1.05 }}
                     className={`relative group w-full ${
                       tier.name === "Visionary Partner" ? 'aspect-[2/1]' :
-                      tier.name === "Momentum Partners" ? 'aspect-[2/1]' :
+                      tier.name === "Momentum Partners" || tier.name === "Genesis" ? 'aspect-[2/1]' :
                       'aspect-[3/2]'
-                    } rounded-xl overflow-hidden`}
+                    } rounded-xl overflow-hidden cursor-pointer`}
+                    onClick={() => sponsor.url && window.open(sponsor.url, '_blank', 'noopener noreferrer')}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${getRandomGradient(index)} opacity-50 group-hover:opacity-70 transition-all duration-300`} />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
                     <div className="absolute inset-[1px] rounded-xl bg-[rgb(var(--color-background))] bg-opacity-90 backdrop-blur-sm border border-white/10" />
                     
                     <div className="relative h-full flex flex-col items-center justify-center p-4">
-                      {/* Placeholder Design */}
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center mb-3">
-                        <div className="w-6 h-6 rounded bg-white/20" />
-                      </div>
-                      <div className="text-center">
+                      {sponsor.image ? (
+                        <div className="px-8 py-6 w-full flex items-center justify-center">
+                          <img 
+                            src={sponsor.image} 
+                            alt={sponsor.name}
+                            className="w-full h-auto object-contain max-h-16"
+                          />
+                        </div>
+                      ) : (
+                        /* Placeholder Design */
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center mb-3">
+                          <div className="w-6 h-6 rounded bg-white/20" />
+                        </div>
+                      )}
+                      <div className="text-center -mt-2">
                         <div className="text-white/80 font-medium group-hover:text-white transition-colors duration-300">
                           {sponsor.name}
                         </div>
