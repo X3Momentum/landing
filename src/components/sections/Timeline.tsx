@@ -2,11 +2,41 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 
 const locations = [
-  { name: "UT Austin", participants: "300+", date: "Feb 2025", color: "from-[#FF1CF7]" },
-  { name: "Columbia", participants: "400+", date: "March 2025", color: "from-[#7F27FF]" },
-  { name: "TBD", participants: "500+", date: "March/April 2025", color: "from-[#00c3ff]" },
-  { name: "International", participants: "300+", date: "March 2025", color: "from-purple-500" },
-  { name: "Finals", participants: "1000+", date: "May 2025", color: "from-blue-500" },
+  { 
+    name: "UT Austin", 
+    participants: "300+", 
+    date: "Feb 2025", 
+    color: "from-[#FF1CF7]",
+    logo: "/schools/ut-austin.png"
+  },
+  { 
+    name: "Columbia", 
+    participants: "400+", 
+    date: "March 2025", 
+    color: "from-[#7F27FF]",
+    logo: "/schools/columbia.png"
+  },
+  { 
+    name: "TBD", 
+    participants: "500+", 
+    date: "March/April 2025", 
+    color: "from-[#00c3ff]",
+    logo: "/schools/tbd.png"
+  },
+  { 
+    name: "International", 
+    participants: "300+", 
+    date: "March 2025", 
+    color: "from-purple-500",
+    logo: "/schools/globe.png"
+  },
+  { 
+    name: "Finals", 
+    participants: "1000+", 
+    date: "May 2025", 
+    color: "from-blue-500",
+    logo: "/schools/trophy.png"
+  },
 ]
 
 const TimelineItem = ({ location, index, isVisible }: { location: any, index: number, isVisible: boolean }) => {
@@ -52,6 +82,16 @@ const TimelineItem = ({ location, index, isVisible }: { location: any, index: nu
         transition={{ duration: 0.2, delay: animationDelay }}
       >
         <div className="relative">
+          {/* Logo */}
+          <div className="mb-4 flex justify-center">
+            <div className="w-16 h-16 relative">
+              <img
+                src={location.logo}
+                alt={`${location.name} logo`}
+                className={`w-full h-full object-contain ${location.name === "TBD" || location.name === "International" || location.name === "Finals" ? "invert brightness-0" : ""}`}
+              />
+            </div>
+          </div>
           <h3 className="text-xl font-bold mb-2 text-white/90">{location.name}</h3>
           <div className="inline-block px-3 py-1 rounded-full bg-purple-500/10 mb-2">
             <span className="text-purple-400 text-sm font-medium">{location.participants}</span>
