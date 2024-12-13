@@ -153,7 +153,7 @@ export const Contact = () => {
                     rows={4}
                     required
                     className="mt-1 block w-full rounded-lg bg-white/5 border border-white/10 px-4 py-2 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
-                    placeholder="Tell us about your interests..."
+                    placeholder="Your message here..."
                   />
                 </div>
                 <button 
