@@ -1,7 +1,41 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-const tiers = [
+interface BaseSponsor {
+  name: string;
+}
+
+interface MomentumSponsor extends BaseSponsor {
+  type: string;
+}
+
+interface ImageSponsor extends BaseSponsor {
+  image: string;
+  url: string;
+}
+
+interface AvailableSponsor extends BaseSponsor {
+  image?: undefined;
+  url?: undefined;
+  type?: undefined;
+}
+
+type Sponsor = MomentumSponsor | ImageSponsor | AvailableSponsor;
+
+const isImageSponsor = (sponsor: Sponsor): sponsor is ImageSponsor => {
+  return 'image' in sponsor && 'url' in sponsor;
+}
+
+const isMomentumSponsor = (sponsor: Sponsor): sponsor is MomentumSponsor => {
+  return 'type' in sponsor;
+}
+
+interface SponsorTier {
+  name: string;
+  sponsors: Sponsor[];
+}
+
+const tiers: SponsorTier[] = [
   {
     name: "Visionary Partner",
     sponsors: [
@@ -125,14 +159,14 @@ export const Sponsors = () => {
                       tier.name === "Momentum Partners" || tier.name === "Genesis" ? 'aspect-[2/1]' :
                       'aspect-[3/2]'
                     } rounded-xl overflow-hidden cursor-pointer`}
-                    onClick={() => sponsor.url && window.open(sponsor.url, '_blank', 'noopener noreferrer')}
+                    onClick={() => isImageSponsor(sponsor) && window.open(sponsor.url, '_blank', 'noopener noreferrer')}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${getRandomGradient(index)} opacity-50 group-hover:opacity-70 transition-all duration-300`} />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
                     <div className="absolute inset-[1px] rounded-xl bg-[rgb(var(--color-background))] bg-opacity-90 backdrop-blur-sm border border-white/10" />
                     
                     <div className="relative h-full flex flex-col items-center justify-center p-4">
-                      {sponsor.image ? (
+                      {isImageSponsor(sponsor) ? (
                         <div className="px-8 py-6 w-full flex items-center justify-center">
                           <img 
                             src={sponsor.image} 
@@ -150,7 +184,7 @@ export const Sponsors = () => {
                         <div className="text-white/80 font-medium group-hover:text-white transition-colors duration-300">
                           {sponsor.name}
                         </div>
-                        {tier.name === "Momentum Partners" && (
+                        {isMomentumSponsor(sponsor) && (
                           <div className="text-sm text-white/50 mt-1">
                             {sponsor.type}
                           </div>
