@@ -1,31 +1,43 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const tiers = [
   {
-    name: "Tier 1",
+    name: "Visionary Partner",
     sponsors: [
-      { name: "Company 1" },
-      { name: "Company 2" },
+      { name: "Available" },
+      { name: "Available" },
     ]
   },
   {
-    name: "Tier 2",
+    name: "Genesis",
     sponsors: [
-      { name: "Company 3" },
-      { name: "Company 4" },
-      { name: "Company 5" },
-      { name: "Company 6" },
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
     ]
   },
   {
-    name: "Tier 3",
+    name: "Node",
     sponsors: [
-      { name: "Company 7" },
-      { name: "Company 8" },
-      { name: "Company 9" },
-      { name: "Company 10" },
-      { name: "Company 11" },
-      { name: "Company 12" },
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
+    ]
+  },
+  {
+    name: "Hash",
+    sponsors: [
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
+      { name: "Available" },
     ]
   }
 ]
@@ -78,7 +90,11 @@ export const Sponsors = () => {
                 {tier.name}
               </h3>
 
-              <div className={`grid ${tierIndex === 0 ? 'md:grid-cols-2' : tierIndex === 1 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-6'} gap-6 items-center justify-items-center`}>
+              <div className={`grid ${
+                tier.name === "Visionary Partner" ? 'md:grid-cols-2' : 
+                tier.name === "Genesis" ? 'grid-cols-2 lg:grid-cols-4' : 
+                'grid-cols-2 md:grid-cols-3 lg:grid-cols-6'
+              } gap-6 items-center justify-items-center`}>
                 {tier.sponsors.map((sponsor, index) => (
                   <motion.div
                     key={sponsor.name}
@@ -120,15 +136,40 @@ export const Sponsors = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-32 text-center"
+          className="mt-32 text-center space-y-8"
         >
-          <p className="text-gray-300 mb-6">
-            Interested in becoming a sponsor?
-          </p>
-          <button className="relative overflow-hidden group bg-gradient-to-br from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 px-8 py-3 rounded-lg transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <span className="relative text-white font-medium">View Sponsorship Packages</span>
-          </button>
+          <div>
+            <p className="text-gray-300 mb-6">
+              Interested in becoming a sponsor?
+            </p>
+            <a 
+              href="/sponsorship_package.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block relative overflow-hidden group bg-gradient-to-br from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 px-8 py-3 rounded-lg transition-all duration-300"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative text-white font-medium">View Sponsorship Packages</span>
+            </a>
+          </div>
+
+          <div className="flex justify-center gap-4">
+            <Link 
+              to="/incubation"
+              className="inline-block relative overflow-hidden group bg-gradient-to-br from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 px-8 py-3 rounded-lg transition-all duration-300"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative text-white font-medium">Incubation Portal</span>
+            </Link>
+
+            <Link 
+              to="/recruitment"
+              className="inline-block relative overflow-hidden group bg-gradient-to-br from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 px-8 py-3 rounded-lg transition-all duration-300"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative text-white font-medium">Recruitment Portal</span>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
