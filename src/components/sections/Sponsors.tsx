@@ -10,6 +10,15 @@ const tiers = [
     ]
   },
   {
+    name: "Momentum Partners",
+    sponsors: [
+      { name: "Texas Blockchain", type: "Title Sponsor" },
+      { name: "Columbia Blockchain", type: "Title Sponsor" },
+      { name: "South Korea Event", type: "Title Sponsor" },
+      { name: "Available", type: "Ambassador Partner" }
+    ]
+  },
+  {
     name: "Genesis",
     sponsors: [
       { name: "Available" },
@@ -93,6 +102,7 @@ export const Sponsors = () => {
               <div className={`grid ${
                 tier.name === "Visionary Partner" ? 'md:grid-cols-2' : 
                 tier.name === "Genesis" ? 'grid-cols-2 lg:grid-cols-4' : 
+                tier.name === "Momentum Partners" ? 'grid-cols-1 md:grid-cols-4' :
                 'grid-cols-2 md:grid-cols-3 lg:grid-cols-6'
               } gap-6 items-center justify-items-center`}>
                 {tier.sponsors.map((sponsor, index) => (
@@ -106,7 +116,11 @@ export const Sponsors = () => {
                       delay: index * 0.1 + tierIndex * 0.2
                     }}
                     whileHover={{ scale: 1.05 }}
-                    className={`relative group w-full ${tierIndex === 0 ? 'aspect-[2/1]' : 'aspect-[3/2]'} rounded-xl overflow-hidden`}
+                    className={`relative group w-full ${
+                      tier.name === "Visionary Partner" ? 'aspect-[2/1]' :
+                      tier.name === "Momentum Partners" ? 'aspect-[2/1]' :
+                      'aspect-[3/2]'
+                    } rounded-xl overflow-hidden`}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${getRandomGradient(index)} opacity-50 group-hover:opacity-70 transition-all duration-300`} />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
@@ -121,6 +135,11 @@ export const Sponsors = () => {
                         <div className="text-white/80 font-medium group-hover:text-white transition-colors duration-300">
                           {sponsor.name}
                         </div>
+                        {tier.name === "Momentum Partners" && (
+                          <div className="text-sm text-white/50 mt-1">
+                            {sponsor.type}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </motion.div>
