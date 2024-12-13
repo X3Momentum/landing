@@ -4,29 +4,29 @@ import { FaXTwitter, FaLinkedin, FaGithub, FaDiscord, FaTelegram } from 'react-i
 const socialLinks = [
   {
     name: 'Twitter',
-    href: '#',
+    href: 'https://x.com/X3Momentum',
     icon: FaXTwitter,
   },
   {
-    name: 'LinkedIn',
-    href: '#',
-    icon: FaLinkedin,
-  },
-  {
-    name: 'GitHub',
-    href: '#',
-    icon: FaGithub,
-  },
-  {
-    name: 'Discord',
-    href: '#',
-    icon: FaDiscord,
-  },
-  {
     name: 'Telegram',
-    href: '#',
+    href: 'https://t.me/cdermott',
     icon: FaTelegram,
   },
+  // {
+  //   name: 'LinkedIn',
+  //   href: '#',
+  //   icon: FaLinkedin,
+  // },
+  // {
+  //   name: 'GitHub',
+  //   href: '#',
+  //   icon: FaGithub,
+  // },
+  // {
+  //   name: 'Discord',
+  //   href: '#',
+  //   icon: FaDiscord,
+  // },
 ]
 
 export const Contact = () => {
