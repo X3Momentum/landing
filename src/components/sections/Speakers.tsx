@@ -18,7 +18,7 @@ const speakers: Speaker[] = [
   },
   {
     name: "William Wang",
-    title: "Software Engineer Intern",
+    title: "Hackathon Winner",
     company: "Bloomberg",
     bio: "62x hackathon winner ($130K+ in prizes) with experience at Bloomberg, Cohere, and Microsoft, specializing in AI and Web3.",
     image: "/speakers/william.jpg"
